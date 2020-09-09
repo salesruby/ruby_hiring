@@ -25,6 +25,10 @@ Route::group([
 
 });
 
-Route::get('/check', function(){
-    return 123;
-});
+Route::post('candidate/create', 'CandidateController@store');
+Route::post('hire-a-candidate/create', 'JDController@store');
+
+Route::put('candidate/update/{candidate}', 'CandidateController@update');
+Route::get('candidate/{candidate}', 'CandidateController@show');
+Route::get('candidates', 'CandidateController@index');
+

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCandidatesTable extends Migration
+class CreateJDSTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,17 @@ class CreateCandidatesTable extends Migration
      */
     public function up()
     {
-        Schema::create('candidates', function (Blueprint $table) {
+        Schema::create('j_d_s', function (Blueprint $table) {
             $table->id();
-            $table->string('first_name')->nullable();
-            $table->string('last_name')->nullable();
+            $table->string('name')->nullable();
+            $table->string('address')->nullable();
             $table->string('email')->nullable();
-            $table->string('phonenumber')->nullable();
+            $table->string('candidate_number')->nullable();
             $table->string('country')->nullable();
             $table->string('state')->nullable();
             $table->string('city')->nullable();
-            $table->string('industry')->nullable();
-            $table->string('job_title')->nullable();
-            $table->integer('experience')->nullable();
-            $table->enum('gender', ['MALE', 'FEMALE'])->default('MALE');
-            $table->string('cv')->nullable();
+            $table->enum('status', ['Pending', 'Approved', 'Completed'])->default('Pending');
+            $table->string('jd')->nullable();
             $table->timestamps();
         });
     }
@@ -38,6 +35,6 @@ class CreateCandidatesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('candidates');
+        Schema::dropIfExists('j_d_s');
     }
 }
